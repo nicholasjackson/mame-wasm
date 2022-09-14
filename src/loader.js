@@ -363,6 +363,7 @@ var Module = null;
      }
 
      function get_mame_files(cfgr, metadata, modulecfg, filelist) {
+       config.log("ok");
        var files = [],
            bios_files = modulecfg['bios_filenames'];
        bios_files.forEach(function (fname, i) {
@@ -416,9 +417,11 @@ var Module = null;
                                                                      peripherals[periph])); // but that's ok
                                         });
 
-       files.push(cfgr.mountFile('/'+ modulecfg['driver'] + '.cfg',
+       files.push(cfgr.mountFile('emulator/cfg/'+ modulecfg['driver'] + '.cfg',
                                  cfgr.fetchOptionalFile("CFG File",
                                                         get_other_emulator_config_url(module))));
+
+       console.log("mame");
        return files;
      }
 
@@ -450,6 +453,7 @@ var Module = null;
        files.push(cfgr.mountFile('/'+ modulecfg['driver'] + '.cfg',
                                  cfgr.fetchOptionalFile("Config File",
                                                         get_other_emulator_config_url(module))));
+       console.log("sae");
        return files;
      }
 
@@ -507,6 +511,8 @@ var Module = null;
        files.push(cfgr.mountFile('/pce-'+ modulecfg['driver'] + '.cfg',
                                  cfgr.fetchOptionalFile("Config File",
                                                         get_other_emulator_config_url("pce-"+ modulecfg['driver']))));
+
+       console.log("pce");
        return files;
      }
 
@@ -1791,6 +1797,7 @@ var Module = null;
 
      function keyevent(resolve) {
        return function (e) {
+         console.log("keyevent",e);
                 if (e.which == 32) {
                   e.preventDefault();
                   resolve();
@@ -1996,6 +2003,7 @@ var Module = null;
        */
      function blockSomeKeys() {
        function keypress (e) {
+         console.log("keypress",e);
          if (e.which >= 33 && e.which <= 40) {
            e.preventDefault();
            return false;

@@ -22,19 +22,23 @@
     <title>example arcade game</title>
   </head>
   <body>
-    <canvas id="canvas" style="width: 50%; height: 50%; display: block; margin: 0 auto;"></canvas>
+    <canvas id="canvas" style="width: 50%; height: 50%; display: block; margin: 0 auto;" tabindex=-1></canvas>
     <script type="text/javascript" src="es6-promise.js"></script>
     <script type="text/javascript" src="browserfs.min.js"></script>
     <script type="text/javascript" src="loader.js"></script>
     <script type="text/javascript">
       var emulator = new Emulator(document.querySelector("#canvas"),
-                                  null,
-                                  new JSMAMELoader(JSMAMELoader.driver("sf2ce"),
-                                                   JSMAMELoader.nativeResolution(256, 256),
-                                                   JSMAMELoader.scale(3),
-                                                   JSMAMELoader.emulatorJS("cps1.js"),
-                                                   JSMAMELoader.mountFile("sf2ce.zip",
-                                                   JSMAMELoader.fetchFile("Game File", "games/sf2ce.zip"))))
+        null,
+        new MAMELoader(
+          MAMELoader.driver("sf2ce"),
+          MAMELoader.nativeResolution(256, 256),
+          MAMELoader.scale(3),
+          MAMELoader.emulatorJS("cps1.js"),
+          MAMELoader.mountFile("sf2ce.zip", MAMELoader.fetchFile("Game File", "games/sf2ce.zip")),
+          MAMELoader.mountFile("sf2ce.cfg", MAMELoader.fetchFile("CFG File", "games/sf2ce.cfg")),
+          MAMELoader.extraArgs(["-ctrlrpath", "/emulator","-ctrlr","sf2ce"])
+        )
+      );
       emulator.start({ waitAfterDownloading: true });
     </script>
   </body>
