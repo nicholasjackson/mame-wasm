@@ -30,11 +30,11 @@
       var emulator = new Emulator(document.querySelector("#canvas"),
         null,
         new MAMELoader(
-          MAMELoader.driver("pang"),
+          MAMELoader.driver("pang3"),
           MAMELoader.nativeResolution(256, 256),
           MAMELoader.scale(3),
           MAMELoader.emulatorJS("cps1.js"),
-          MAMELoader.mountFile("pang.zip", MAMELoader.fetchFile("Game File", "games/pang.zip")),
+          MAMELoader.mountFile("pang3.zip", MAMELoader.fetchFile("Game File", "games/pang3.zip"))
         )
       );
       emulator.start({ waitAfterDownloading: true });
