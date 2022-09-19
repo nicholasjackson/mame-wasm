@@ -30,13 +30,11 @@
       var emulator = new Emulator(document.querySelector("#canvas"),
         null,
         new MAMELoader(
-          MAMELoader.driver("sf2ce"),
+          MAMELoader.driver("pang"),
           MAMELoader.nativeResolution(256, 256),
           MAMELoader.scale(3),
           MAMELoader.emulatorJS("cps1.js"),
-          MAMELoader.mountFile("sf2ce.zip", MAMELoader.fetchFile("Game File", "games/sf2ce.zip")),
-          MAMELoader.mountFile("sf2ce.cfg", MAMELoader.fetchFile("CFG File", "games/sf2ce.cfg")),
-          MAMELoader.extraArgs(["-ctrlrpath", "/emulator","-ctrlr","sf2ce"])
+          MAMELoader.mountFile("pang.zip", MAMELoader.fetchFile("Game File", "games/pang.zip")),
         )
       );
       emulator.start({ waitAfterDownloading: true });
